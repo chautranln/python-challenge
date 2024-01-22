@@ -1,12 +1,17 @@
 import os
 import csv
 
-ElectionDataCSV = os.path.join("PyPoll", "Resources", "election_data.csv")
+
+ElectionDataCSV = os.path.join("Resources", "election_data.csv")
+OUTPUT_PATH = os.path.join("analysis", "Election_results.txt")
 
 #Set variables
 TotalVotes = 0
-CandidateVotes = []
+CandidateVotes = {}
 Results = []
+
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 with open(ElectionDataCSV) as BudgetFile:
     csvreader = csv.reader(BudgetFile, delimiter=",")
@@ -31,18 +36,18 @@ for candidate, votes in CandidateVotes.items():
 winner = max(CandidateVotes, key=CandidateVotes.get) 
 
 #Output file
-Output = os.path.join("PyPoll", "analysis", "Election_results.txt")
-
-with open(Output, "w") as OutputFile:
+with open(OUTPUT_PATH, "w") as OutputFile:
     OutputFile.write("Election Results\n")
     OutputFile.write("-------------------------\n")
     OutputFile.write(f"Total Votes: {TotalVotes}\n")
     OutputFile.write("-------------------------\n")
     for result in Results:
-        OutputFile.write(f"{Results}\n")
+        OutputFile.write(f"{result}\n")
     OutputFile.write("-------------------------\n")
     OutputFile.write(f"Winner: {winner}\n")
     OutputFile.write("-------------------------")
+
+print(OutputFile)
 
 
 
