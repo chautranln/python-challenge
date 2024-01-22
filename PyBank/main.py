@@ -6,7 +6,7 @@
 
 import os
 import csv
-BudgetDataCSV = os.path.join("/Users/chaunguyen/Desktop/classwork/Homework/python-challenge/PyBank/Resources/budget_data.csv")
+BudgetDataCSV = os.path.join("PyBank", "Resources", "budget_data.csv")
 
 #Set variables
 TotalMonths = 0
@@ -15,13 +15,10 @@ TotalProfit = []
 Changes = []
 Date = []
 
-
-#Open csv file
 with open(BudgetDataCSV, encoding='UTF-8') as Budgetcsvfile:
     csvreader = csv.reader(Budgetcsvfile, delimiter=",")
-
-#Skip header labels
     header = next(csvreader)
+
 # Loop 
     for row in csvreader:
 #Count total months
@@ -46,7 +43,6 @@ GreatestIncreaseDate = Date[Changes.index(GreatestIncrease)]
 GreatestDecreaseDate = Date[Changes.index(GreatestDecrease)]
 
 #Output into text file
-#OutputPath = os.path.join("..", "analysis", "Bank_Data_Output.txt")
 
 Output = os.path.join("Pybank", "analysis", "Budget_Output.txt")
 
