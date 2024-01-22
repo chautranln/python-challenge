@@ -29,20 +29,18 @@ with open(BudgetDataCSV, encoding='UTF-8') as Budgetcsvfile:
         TotalMonths += 1
 
         #Calculate net total of profit
-        date = row[0]
         profit = (int(row[1]))
-
         TotalProfit.append(profit)
+        #Set dates and add to list
+        date = row[0]
         Date.append(date)
 
         #Calculate changes in "Profit/Losses" over entire period, and then average of those changes
-        #profit += (int(row[1]))
-        #PreviousProfit = int(row[1])
         if TotalMonths > 1:
                 change = (profit - PreviousProfit) #skip first row
                 Changes.append(change) #skip first row
         PreviousProfit = profit
-        
+#Calculate average change        
 AverageChange = round(sum(Changes)/len(Changes), 2)
 
 #Greatest increase/decrease in profits (date and amount) 
@@ -51,7 +49,7 @@ GreatestDecrease = min(Changes)
 GreatestIncreaseDate = Date[Changes.index(GreatestIncrease)]
 GreatestDecreaseDate = Date[Changes.index(GreatestDecrease)]
 
-#Output into text file
+#Output into text file and print
 output_text = (
     "Financial Analysis\n"
     "----------------------------\n"

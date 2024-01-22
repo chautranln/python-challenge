@@ -35,7 +35,7 @@ for candidate, votes in CandidateVotes.items():
 #Winner of the election
 winner = max(CandidateVotes, key=CandidateVotes.get) 
 
-#Output file
+#Output into text file and print
 with open(OUTPUT_PATH, "w") as OutputFile:
     OutputFile.write("Election Results\n")
     OutputFile.write("-------------------------\n")
