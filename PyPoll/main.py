@@ -30,7 +30,7 @@ with open(ElectionDataCSV) as BudgetFile:
 
 for candidate, votes in CandidateVotes.items():
     percentage = (votes/TotalVotes)
-    Results.append(f"{candidate}: ({percentage:.3%}%) ({votes})")
+    Results.append(f"{candidate}: {percentage:.3%}% ({votes})")
 
 #Winner of the election
 winner = max(CandidateVotes, key=CandidateVotes.get) 
